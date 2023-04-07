@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create Address{% endblock %}
+{% block title %}Edit amount{% endblock %}
 
 {% block body %}
 <style>
@@ -9,11 +9,14 @@
 </style>
 
 <div class="example-wrapper">
-    {% if address.id %}
-        <h1>Modification de l'adresse</h1>
-    {% else %}
-        <h1>Creation d'une nouvelle adresse</h1>
-    {% endif %}
-    {{ form(form) }}
+    <h1>Ajouter des fonds à la banque</h1>
+
+    <p>Fonds actuel: {{ bank.amount }}</p>
+
+    {{form_start(form)}}
+        <label for="addAmount">Montant à ajouter</label>
+        <input type="number" name="addAmount">
+    {{form_end(form)}}
+
 </div>
 {% endblock %}

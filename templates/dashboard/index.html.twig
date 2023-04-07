@@ -21,6 +21,16 @@
                 </article>
 
                 <article class="mx-5">
+                    <h2 class="text-xl font-bold tracking-tight text-gray-900">Fonds disponible:</h2>
+                        <div class="pl-2">
+                            <p>{{ app.user.bank.amount }} €</p>
+                        </div>
+                        <div class="pt-5">
+                            <a href="/dashboard/bank/edit/{{app.user.bank.id}}" class="rounded-full bg-indigo-600 px-2.5 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Ajouter des fonds</a>
+                        </div>
+                </article>
+
+                <article class="mx-5">
                     <h2 class="text-xl font-bold tracking-tight text-gray-900">Adresses:</h2>
                         {% if app.user.address %}
                             {% for address in app.user.address %}
