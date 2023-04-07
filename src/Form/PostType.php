@@ -4,7 +4,7 @@ namespace App\Form;
 
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -17,18 +17,37 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre'
+                'label' => 'Titre',
+                'attr' => [
+                    'class' => "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description'
+                'label' => 'Description',
+                'attr' => [
+                    'class' => "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
             ])
-            ->add('price', MoneyType::class, [
-                'label' => 'Prix'
+            ->add('price', NumberType::class, [
+                'label' => 'Prix €',
+                'attr' => [
+                    'class' => "mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
             ])
-            // ->add('is_visible')
-            // ->add('user')
-            // ->add('acquisition')
-            ->add('Valider', SubmitType::class)
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                ]
+            ])
         ;
     }
 

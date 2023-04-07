@@ -15,10 +15,35 @@ class AddressType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('street', TextType::class)
-            ->add('city', TextType::class)
-            ->add('zip', IntegerType::class)
-            ->add('Valider', SubmitType::class)
+            ->add('street', TextType::class, [
+                'attr' => [
+                    'class' => "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
+            ])
+            ->add('city', TextType::class, [
+                'attr' => [
+                    'class' => "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
+            ])
+            ->add('zip', IntegerType::class, [
+                'attr' => [
+                    'class' => "mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
+            ])
+            ->add('Valider', SubmitType::class, [
+                'attr' => [
+                    'class' => "bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                ]
+            ])
         ;
     }
 

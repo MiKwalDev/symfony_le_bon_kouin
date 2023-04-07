@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentary;
 use App\Entity\Post;
 use App\Entity\User;
+use App\Form\CommentaryType;
 use App\Form\PostType;
 use App\Repository\PostRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,6 +16,30 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
 {
+    #[Route('/post/{post}', name: 'app_post')]
+    public function show(Post $post, CommentaryType $form, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $comment = new Commentary();
+        $comment->setUser($this->getUser());
+        $comment->setPost($post);
+        
+        $form = $this->createForm(CommentaryType::class, $comment);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_post', ['post' => $post->getId()] );
+        }
+
+        return $this->render('post/show.html.twig', [
+            'post' => $post,
+            'form' => $form->createView()
+        ]);
+    }
+
     #[Route('/dashboard/{user}/post/create', name: 'app_post_create')]
     public function create(User $user, PostType $form, Request $request, EntityManagerInterface $entityManager): Response
     {

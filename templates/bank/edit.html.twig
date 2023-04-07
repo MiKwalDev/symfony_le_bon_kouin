@@ -9,14 +9,16 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Ajouter des fonds à la banque</h1>
+    <h1 class="text-2xl font-bold text-center">Ajouter des fonds à la banque</h1>
 
-    <p>Fonds actuel: {{ bank.amount }}</p>
+    <section class="border-2 p-5 mt-5">
+        <p><span class="font-bold">Fonds actuel:</span> {{ bank.amount }}</p>
 
-    {{form_start(form)}}
-        <label for="addAmount">Montant à ajouter</label>
-        <input type="number" name="addAmount">
-    {{form_end(form)}}
+        {{form_start(form)}}
+            <label for="addAmount" class="mt-2 block text-gray-700 text-sm font-bold mb-2">Montant à ajouter</label>
+            <input class="mb-5 shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" name="addAmount">
+        {{form_end(form)}}
+    </section>
 
 </div>
 {% endblock %}

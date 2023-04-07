@@ -20,19 +20,29 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class, ['attr' => [
-                'class' => 'ml-5 border-black border-2 rounded-md my-1 pl-1'
-            ]])
-            ->add('pseudo', TextType::class, ['attr' => [
-                'class' => 'ml-5 border-black border-2 rounded-md my-1 pl-1'
-            ]])
+            ->add('email', EmailType::class, [
+                'attr' => [
+                    'class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
+            ])
+            ->add('pseudo', TextType::class, [
+                'attr' => [
+                    'class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                ],
+                'label_attr' => [
+                    'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                ]
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'attr' => [
-                    'autocomplete' => 'new-password'
+                    'autocomplete' => 'new-password',
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -45,12 +55,24 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-                'first_options'  => ['label' => 'Password', 'attr' => [
-                    'class' => 'ml-5 border-black border-2 rounded-md my-1 pl-1'
-                ]],
-                'second_options' => ['label' => 'Confirmation Password', 'attr' => [
-                    'class' => 'ml-5 border-black border-2 rounded-md my-1 pl-1'
-                ]],
+                'first_options'  => [
+                    'label' => 'Password',
+                    'attr' => [
+                        'class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                    ],
+                    'label_attr' => [
+                        'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Confirmation Password',
+                    'attr' => [
+                        'class' => 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                    ],
+                    'label_attr' => [
+                        'class' => "mt-2 block text-gray-700 text-sm font-bold mb-2"
+                    ]
+                ],
             ])
         ;
     }
