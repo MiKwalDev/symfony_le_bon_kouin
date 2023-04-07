@@ -17,7 +17,9 @@
 		<div class="hidden lg:flex lg:gap-x-12">
 			<a href="/home" class="text-sm font-semibold leading-6 text-gray-900">Home</a>
 
-			<a href="" class="text-sm font-semibold leading-6 text-gray-900"></a>
+			{% if app.user %}
+				<a href="/dashboard" class="text-sm font-semibold leading-6 text-gray-900">Tableau de bord</a>
+			{% endif %}
 
 			<a href="" class="text-sm font-semibold leading-6 text-gray-900"></a>
 
