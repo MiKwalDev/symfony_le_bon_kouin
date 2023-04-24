@@ -14,6 +14,15 @@
         <p>Vendeur: {{ post.user.pseudo }}</p>
         <p class="text-center mt-3">{{ post.description }}</p>
         <p class="text-center mt-3">{{ post.price }} €</p>
+        {% if app.user %}
+            <div class="m-5 pt-5 text-end">
+                <a href="/acquisition/{{ post.id }}/buy" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Acheter</a>
+            </div>
+        {% else %}
+            <div class="m-5 pt-5 text-end">
+                <a href="/login" class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Se connecter</a>
+            </div>
+        {% endif %}
     </section>
     <section>
         {% if app.user %}

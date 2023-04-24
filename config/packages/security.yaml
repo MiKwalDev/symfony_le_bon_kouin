@@ -21,6 +21,8 @@ security:
                 # "app_login" is the name of the route created previously
                 login_path: app_login
                 check_path: app_login
+                default_target_path: app_home
+                use_referer: true
             
             logout:
                 path: app_logout
@@ -38,6 +40,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/dashboard, roles: ROLE_USER }
+        - { path: ^/acquisition, roles: ROLE_USER }
 
 when@test:
     security:

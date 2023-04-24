@@ -65,13 +65,9 @@ class PostController extends AbstractController
     }
 
     #[Route('/dashboard/post/{post}/togglevisibility', name: 'app_post_togglevisibility')]
-    public function toggleVisibility(Post $post, PostRepository $repo, EntityManagerInterface $entityManager): Response
+    public function toggleVisibility(Post $post, EntityManagerInterface $entityManager): Response
     {
-        if ($post->isIsVisible()) {
-            $post->setIsVisible(false);
-        } else {
-            $post->setIsVisible(true);
-        }
+        $post->setIsVisible(!$post->isIsVisible());
         
         
         $entityManager->persist($post);
